@@ -36,7 +36,7 @@ def make_barcode(srcfile, filename='barcode', width=1280, height=720, thickness=
 		        '-loglevel', 'quiet', # suppress output
 		        '-frames:v', '1',     # extract 1 frame
 		        '-y',                 # force overwrite
-		        tmpfile.name]
+		        tmpfile.name]         # output file
 		call(args) # grab frame
 
 		try:
@@ -55,21 +55,21 @@ def make_barcode(srcfile, filename='barcode', width=1280, height=720, thickness=
 
 def main():
 	parser = argparse.ArgumentParser(description='Create a video palette barcode')
-	parser.add_argument('file', help='File to process')
+	parser.add_argument('file', help='file to process')
 	parser.add_argument('--output',
-	                    help='Output file')
+	                    help='output file')
 	parser.add_argument('--width',
 	                    type=int,
 	                    default=1280,
-	                    help='Output image width')
+	                    help='output image width  (default=1280)')
 	parser.add_argument('--height',
 	                    type=int,
 	                    default=720,
-	                    help='Output image height')
+	                    help='output image height (default=720)')
 	parser.add_argument('--thickness',
 	                    type=int,
 	                    default=10,
-	                    help='Frame thickness')
+	                    help='frame thickness     (default=10)')
 	args = parser.parse_args()
 
 	filename = args.output or ''
